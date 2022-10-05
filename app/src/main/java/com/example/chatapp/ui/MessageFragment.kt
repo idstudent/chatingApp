@@ -18,8 +18,8 @@ class MessageFragment : BaseFragment<FragmentMessageBinding>() {
         get() = R.layout.fragment_message
 
     private val chatListViewModel : ChatListViewModel by viewModel()
-    private var chatRooms: ArrayList<ChatRoom> = arrayListOf()
-    private var chatRoomKeys: ArrayList<String> = arrayListOf()
+    private var chatRooms =  ArrayList<ChatRoom>()
+    private var chatRoomKeys = ArrayList<String>()
 
     override fun initView() {
         super.initView()

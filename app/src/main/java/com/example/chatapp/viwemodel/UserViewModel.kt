@@ -1,6 +1,5 @@
 package com.example.chatapp.viwemodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -28,9 +27,7 @@ class UserViewModel : ViewModel() {
         try {
             App.firebaseAuthInstance?.let { instance ->
                 instance.signInWithEmailAndPassword(email, password)
-                    .addOnFailureListener {
-                        Log.e("exception", "$it")
-                    }
+                    .addOnFailureListener {}
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
                             instance.currentUser?.let {
@@ -48,9 +45,9 @@ class UserViewModel : ViewModel() {
 
     fun getAllUser() {
         val allUsers = ArrayList<User>()
-        val myUid = FirebaseAuth.getInstance().currentUser?.uid.toString()        //현재 사용자 아이디
+        val myUid = FirebaseAuth.getInstance().currentUser?.uid.toString()
 
-        App.firebaseDatabaseInstance?.getReference("User")?.child("users")   //사용자 데이터 요청
+        App.firebaseDatabaseInstance?.getReference("User")?.child("users")
             ?.addValueEventListener(object : ValueEventListener {
                 override fun onCancelled(error: DatabaseError) {}
                 override fun onDataChange(snapshot: DataSnapshot) {

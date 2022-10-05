@@ -26,19 +26,15 @@ class MessageAdapter(
         }
     }
 ) {
-    //    var messages: ArrayList<Message> = arrayListOf()     //메시지 목록
     var messageKeys = ArrayList<String>()
     val myUid = FirebaseAuth.getInstance().currentUser?.uid.toString()
-//    @RequiresApi(Build.VERSION_CODES.O)
-//    val recyclerView = (context as ChatRoomActivity).recycler_talks   //목록이 표시될 리사이클러 뷰
-
 
     override fun getItemViewType(position: Int): Int {
         return if (getItem(position).senderUid == myUid) 1 else 0
     }
 
     fun submit(messageKeys: List<String>) {
-        this.messageKeys.addAll(messageKeys)
+        this.messageKeys = (messageKeys as ArrayList<String>).clone() as ArrayList<String>
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -68,6 +64,26 @@ class MessageAdapter(
         }
     }
 
+    private fun getDateText(sendDate: String): String {
+
+        var dateText = ""
+        val timeString: String
+        if (sendDate.isNotBlank()) {
+            timeString = sendDate.substring(8, 12)
+            val hour = timeString.substring(0, 2)
+            val minute = timeString.substring(2, 4)
+
+            val timeformat = "%02d:%02d"
+
+            if (hour.toInt() > 11) {
+                dateText = "오후 ${timeformat.format(hour.toInt() - 12, minute.toInt())}"
+            } else {
+                dateText = "오전 ${timeformat.format(hour.toInt(), minute.toInt())}"
+            }
+        }
+        return dateText
+    }
+
     inner class OtherMessageViewHolder(
         private val binding: ListTalkItemOthersBinding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -81,27 +97,7 @@ class MessageAdapter(
             setShown(position)
         }
 
-        private fun getDateText(sendDate: String): String {
 
-            var dateText = ""
-            var timeString = ""
-            if (sendDate.isNotBlank()) {
-                timeString = sendDate.substring(8, 12)
-                var hour = timeString.substring(0, 2)
-                var minute = timeString.substring(2, 4)
-
-                var timeformat = "%02d:%02d"
-
-                if (hour.toInt() > 11) {
-                    dateText += "오후 "
-                    dateText += timeformat.format(hour.toInt() - 12, minute.toInt())
-                } else {
-                    dateText += "오전 "
-                    dateText += timeformat.format(hour.toInt(), minute.toInt())
-                }
-            }
-            return dateText
-        }
 
         private fun setShown(position: Int) {          //메시지 확인하여 서버로 전송
             chatRoomKey?.let {
@@ -121,32 +117,11 @@ class MessageAdapter(
 
         fun onBind(item: Message) {
             binding.run {
-                txtMessage.text = item.content
-                txtDate.text = getDateText(item.send_date)
+                tvMessage.text = item.content
+                tvDate.text = getDateText(item.send_date)
 
-                txtIsShown.isVisible = !item.confirmed
+                tvCheck.isVisible = !item.confirmed
             }
-        }
-
-        private fun getDateText(sendDate: String): String {
-            var dateText = ""
-            var timeString = ""
-            if (sendDate.isNotBlank()) {
-                timeString = sendDate.substring(8, 12)
-                var hour = timeString.substring(0, 2)
-                var minute = timeString.substring(2, 4)
-
-                var timeformat = "%02d:%02d"
-
-                if (hour.toInt() > 11) {
-                    dateText += "오후 "
-                    dateText += timeformat.format(hour.toInt() - 12, minute.toInt())
-                } else {
-                    dateText += "오전 "
-                    dateText += timeformat.format(hour.toInt(), minute.toInt())
-                }
-            }
-            return dateText
         }
     }
 

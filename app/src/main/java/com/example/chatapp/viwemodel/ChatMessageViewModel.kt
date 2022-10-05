@@ -1,6 +1,7 @@
 package com.example.chatapp.viwemodel
 
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -23,12 +24,16 @@ class ChatMessageViewModel : ViewModel() {
     val keys: LiveData<List<String>> get() = _keys
 
     fun getMessages(chatRoomKey : String) {
+        messageList.clear()
+        messageKeyList.clear()
+
         App.firebaseDatabaseInstance?.getReference("ChatRoom")
             ?.child("chatRooms")?.child(chatRoomKey)?.child("messages")   //전체 메시지 목록 가져오기
             ?.addValueEventListener(object : ValueEventListener {
                 override fun onCancelled(error: DatabaseError) {}
                 override fun onDataChange(snapshot: DataSnapshot) {
                     for (data in snapshot.children) {
+
                         data.getValue<Message>()?.let { messageList.add(it) }
                         data?.key?.let { messageKeyList.add(it) }
                     }

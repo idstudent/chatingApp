@@ -20,7 +20,6 @@ class ChatListViewModel : ViewModel() {
             ?.equalTo(true)?.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onCancelled(error: DatabaseError) {}
                 override fun onDataChange(snapshot: DataSnapshot) {
-
                     _result.value = snapshot
                 }
             })
