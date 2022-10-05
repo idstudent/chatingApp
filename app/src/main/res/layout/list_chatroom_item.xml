@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="이름"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="14dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_message_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="날짜"
+            android:layout_marginRight="14dp"
+            app:layout_constraintBottom_toBottomOf="@id/txt_name"
+            app:layout_constraintTop_toTopOf="@id/txt_name"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="메시지"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/txt_name"
+            app:layout_constraintLeft_toLeftOf="@id/txt_name"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_chat_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="카운트"
+            app:layout_constraintBottom_toBottomOf="@id/txt_message"
+            app:layout_constraintTop_toTopOf="@id/txt_message"
+            app:layout_constraintRight_toRightOf="@id/txt_message_date"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
