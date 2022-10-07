@@ -3,6 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="user"
+            type="com.example.chatapp.model.User" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -14,14 +19,17 @@
             android:src="@drawable/ic_baseline_close_24"
             android:layout_marginLeft="20dp"
             android:background="@android:color/transparent"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_user_info"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_user_name"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_user_info" />
+            app:layout_constraintTop_toTopOf="@+id/tv_user_name" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_user_info"
+            android:id="@+id/tv_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            tools:text="이름"
+            android:text="@{user.name}"
+            android:textStyle="bold"
             android:layout_marginTop="30dp"
             android:textSize="18dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,18 +37,27 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_user_job_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            jobAndCompany="@{user}"
+            app:layout_constraintTop_toBottomOf="@id/tv_user_name"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_date_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:text="오늘"
             app:layout_constraintEnd_toStartOf="@+id/divider_right"
             app:layout_constraintStart_toEndOf="@+id/divider_left"
-            app:layout_constraintTop_toBottomOf="@+id/tv_user_info" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_user_job_company" />
 
         <View
             android:id="@+id/divider_left"

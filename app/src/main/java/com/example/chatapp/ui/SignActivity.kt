@@ -1,6 +1,7 @@
 package com.example.chatapp.ui
 
 import android.content.Intent
+import android.util.Log
 import android.widget.Toast
 import com.example.chatapp.App
 import com.example.chatapp.R
@@ -18,11 +19,15 @@ class SignActivity : BaseActivity<ActivitySignBinding>() {
         super.initListener()
 
         binding.btnSignup.setOnSingleClickListener {
+            val job : String
+            val company : String
             var email: String
             var password: String
             var name: String
 
             binding.run {
+                job = etJob.text.toString().trim()
+                company = etCompany.text.toString().trim()
                 email = etEmail.text.toString().trim()
                 password = etPassword.text.toString().trim()
                 name = etName.text.toString()
@@ -38,7 +43,7 @@ class SignActivity : BaseActivity<ActivitySignBinding>() {
                             val userId = user?.uid
                             val userIdSt = userId.toString()
                             FirebaseDatabase.getInstance().getReference("User").child("users")
-                                .child(userId.toString()).setValue(User(name, userIdSt, email))
+                                .child(userId.toString()).setValue(User(job, company, name, userIdSt, email))
 
                             Toast.makeText(this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show()
 
@@ -47,6 +52,10 @@ class SignActivity : BaseActivity<ActivitySignBinding>() {
                             e.printStackTrace()
                         }
                     } else {
+                        task.addOnFailureListener {
+                            Log.e("errorljy", "${it.localizedMessage.toString()} ${it.printStackTrace()} $it")
+                        }
+
                         Toast.makeText(this, "회원가입에 실패하였습니다.", Toast.LENGTH_SHORT).show()
                     }
                 }

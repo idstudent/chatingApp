@@ -36,7 +36,7 @@ class ChatRoomActivity : BaseActivity<ActivityChatRoomBinding>() {
         val adapter = MessageAdapter(chatRoomKey)
 
         binding.run {
-            tvUserInfo.text = opponentUser.name
+            user = opponentUser
             rvMessage.layoutManager = LinearLayoutManager(this@ChatRoomActivity)
             rvMessage.adapter = adapter
         }

@@ -4,16 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../.gradle/caches/transforms-3/27b8d8c9a95d5b7fe6dc1deefb8194b2/transformed/core-1.8.0/res/layout/custom_dialog.xml" value="0.35885416666666664" />
-        <entry key="..\:/github/test_movie/chatingApp/app/src/main/res/drawable-v24/background_talk_count.xml" value="0.224" />
-        <entry key="..\:/github/test_movie/chatingApp/app/src/main/res/drawable/background_talk_mine.xml" value="0.224" />
-        <entry key="..\:/github/test_movie/chatingApp/app/src/main/res/layout/activity_add_chat_room.xml" value="0.35260416666666666" />
-        <entry key="..\:/github/test_movie/chatingApp/app/src/main/res/layout/activity_chat_room.xml" value="0.33" />
-        <entry key="..\:/github/test_movie/chatingApp/app/src/main/res/layout/list_talk_item_mine.xml" value="0.35260416666666666" />
         <entry key="app/src/main/res/drawable/background_talk_mine.xml" value="0.245" />
         <entry key="app/src/main/res/drawable/menu_selector.xml" value="0.245" />
         <entry key="app/src/main/res/layout/activity_add_chat_room.xml" value="0.2995049504950495" />
         <entry key="app/src/main/res/layout/activity_base.xml" value="0.35885416666666664" />
-        <entry key="app/src/main/res/layout/activity_chat_room.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_chat_room.xml" value="0.28919677734375004" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.2407562255859375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3865814696485623" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.24963531494140623" />
@@ -33,7 +28,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
