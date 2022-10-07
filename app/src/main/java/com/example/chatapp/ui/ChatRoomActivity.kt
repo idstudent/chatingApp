@@ -7,7 +7,9 @@ import com.example.chatapp.R
 import com.example.chatapp.MessageAdapter
 import com.example.chatapp.model.User
 import com.example.chatapp.databinding.ActivityChatRoomBinding
+import com.example.chatapp.model.ChatRoom
 import com.example.chatapp.model.Message
+import com.example.chatapp.util.Util
 import com.example.chatapp.util.setOnSingleClickListener
 import com.example.chatapp.viwemodel.ChatMessageViewModel
 import com.google.firebase.database.DataSnapshot
@@ -30,13 +32,19 @@ class ChatRoomActivity : BaseActivity<ActivityChatRoomBinding>() {
     override fun initView() {
         super.initView()
 
+        val chatRoom = intent.getSerializableExtra("chatRoom") as ChatRoom
         chatRoomKey = intent.getStringExtra("chatRoomKey") ?: throw RuntimeException("not key")
         val opponentUser = (intent.getSerializableExtra("opponent")) as User
 
         val adapter = MessageAdapter(chatRoomKey)
 
+        val lastMessage =
+            chatRoom.messages?.values?.sortedWith(compareBy { it.sendDate })
+                ?.last()
+
         binding.run {
             user = opponentUser
+            tvDateTitle.text = lastMessage?.sendDate?.let { Util().getLastMessageTime(it) }
             rvMessage.layoutManager = LinearLayoutManager(this@ChatRoomActivity)
             rvMessage.adapter = adapter
         }

@@ -4,7 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../.gradle/caches/transforms-3/27b8d8c9a95d5b7fe6dc1deefb8194b2/transformed/core-1.8.0/res/layout/custom_dialog.xml" value="0.35885416666666664" />
+        <entry key="app/src/main/res/drawable-v24/background_talk_count.xml" value="0.245" />
+        <entry key="app/src/main/res/drawable-v24/bg_chat_count.xml" value="0.245" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.245" />
         <entry key="app/src/main/res/drawable/background_talk_mine.xml" value="0.245" />
+        <entry key="app/src/main/res/drawable/bg_chat_count.xml" value="0.245" />
+        <entry key="app/src/main/res/drawable/ic_baseline_account_box_24.xml" value="0.245" />
+        <entry key="app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.245" />
+        <entry key="app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.245" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.245" />
         <entry key="app/src/main/res/drawable/menu_selector.xml" value="0.245" />
         <entry key="app/src/main/res/layout/activity_add_chat_room.xml" value="0.2995049504950495" />
         <entry key="app/src/main/res/layout/activity_base.xml" value="0.35885416666666664" />
@@ -21,7 +29,7 @@
         <entry key="app/src/main/res/layout/fragment_my_page.xml" value="0.35885416666666664" />
         <entry key="app/src/main/res/layout/fragment_person.xml" value="0.35885416666666664" />
         <entry key="app/src/main/res/layout/list_chatroom_item.xml" value="0.35798816568047337" />
-        <entry key="app/src/main/res/layout/list_person_item.xml" value="0.1765625" />
+        <entry key="app/src/main/res/layout/list_person_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/list_talk_item_mine.xml" value="0.3578125" />
         <entry key="app/src/main/res/layout/list_talk_item_others.xml" value="0.3578125" />
         <entry key="app/src/main/res/menu/nav_menu.xml" value="0.35885416666666664" />

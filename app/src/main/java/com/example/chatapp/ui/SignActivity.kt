@@ -47,6 +47,7 @@ class SignActivity : BaseActivity<ActivitySignBinding>() {
                             Toast.makeText(this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show()
 
                             startActivity(Intent(this@SignActivity, MainActivity::class.java))
+                            finish()
                         } catch (e: Exception) {
                             e.printStackTrace()
                         }

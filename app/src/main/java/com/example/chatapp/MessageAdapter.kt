@@ -3,7 +3,6 @@ package com.example.chatapp
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -64,36 +63,11 @@ class MessageAdapter(
         }
     }
 
-    private fun getDateText(sendDate: String): String {
-
-        var dateText = ""
-        val timeString: String
-        if (sendDate.isNotBlank()) {
-            timeString = sendDate.substring(8, 12)
-            val hour = timeString.substring(0, 2)
-            val minute = timeString.substring(2, 4)
-
-            val timeformat = "%02d:%02d"
-
-            if (hour.toInt() > 11) {
-                dateText = "오후 ${timeformat.format(hour.toInt() - 12, minute.toInt())}"
-            } else {
-                dateText = "오전 ${timeformat.format(hour.toInt(), minute.toInt())}"
-            }
-        }
-        return dateText
-    }
-
     inner class OtherMessageViewHolder(
         private val binding: ListTalkItemOthersBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(item: Message, position: Int) {
-            binding.run {
-                txtMessage.text = item.content
-                txtDate.text = getDateText(item.send_date)
-                txtIsShown.isVisible = !item.confirmed
-            }
-
+            binding.message = item
             setShown(position)
         }
 
@@ -115,12 +89,7 @@ class MessageAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun onBind(item: Message) {
-            binding.run {
-                tvMessage.text = item.content
-                tvDate.text = getDateText(item.send_date)
-
-                tvCheck.isVisible = !item.confirmed
-            }
+            binding.message = item
         }
     }
 

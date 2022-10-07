@@ -4,7 +4,7 @@ import java.io.Serializable
 
 data class Message(
     var senderUid: String = "",
-    var send_date: String = "",
+    var sendDate: String = "",
     var content: String = "",
     var confirmed: Boolean = false
 ) : Serializable
