@@ -1,5 +1,6 @@
 package com.example.chatapp.ui
 
+import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,7 @@ abstract class BaseActivity<BINDING : ViewDataBinding> : AppCompatActivity() {
     protected lateinit var binding: BINDING
     abstract val layoutId: Int
 
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

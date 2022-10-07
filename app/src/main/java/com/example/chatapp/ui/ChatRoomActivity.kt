@@ -30,8 +30,8 @@ class ChatRoomActivity : BaseActivity<ActivityChatRoomBinding>() {
     override fun initView() {
         super.initView()
 
-        chatRoomKey = intent.getStringExtra("ChatRoomKey") ?: throw RuntimeException("not key")
-        val opponentUser = (intent.getSerializableExtra("Opponent")) as User
+        chatRoomKey = intent.getStringExtra("chatRoomKey") ?: throw RuntimeException("not key")
+        val opponentUser = (intent.getSerializableExtra("opponent")) as User
 
         val adapter = MessageAdapter(chatRoomKey)
 
@@ -59,6 +59,7 @@ class ChatRoomActivity : BaseActivity<ActivityChatRoomBinding>() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         for (data in snapshot.children) {
                             chatRoomKey = data.key
+                            chatRoomKey?.let { chatMessageViewModel.getMessages(it) }
                             break
                         }
                     }

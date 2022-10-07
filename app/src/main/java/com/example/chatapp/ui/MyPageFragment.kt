@@ -22,7 +22,7 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
                     .setMessage("로그아웃 하시겠습니까?")
                     .setPositiveButton("확인") { dialog, _ ->
                         try {
-                            FirebaseAuth.getInstance().signOut()             //로그아웃
+                            FirebaseAuth.getInstance().signOut()
                             startActivity(Intent(it, LoginActivity::class.java))
                             dialog.dismiss()
                             (activity as MainActivity).finish()

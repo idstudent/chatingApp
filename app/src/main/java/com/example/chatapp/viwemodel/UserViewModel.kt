@@ -15,8 +15,8 @@ class UserViewModel : ViewModel() {
     private val _result: MutableLiveData<Boolean> = MutableLiveData()
     val result: LiveData<Boolean> get() = _result
 
-    private val _getUsers : MutableLiveData<List<User>> = MutableLiveData()
-    val getUsers : LiveData<List<User>> get() = _getUsers
+    private val _getUsers: MutableLiveData<List<User>> = MutableLiveData()
+    val getUsers: LiveData<List<User>> get() = _getUsers
 
     private val _my: MutableLiveData<User> = MutableLiveData()
     val my: LiveData<User> get() = _my
@@ -38,7 +38,7 @@ class UserViewModel : ViewModel() {
                         }
                     }
             }
-        } catch (e : Exception) {
+        } catch (e: Exception) {
             _result.value = false
         }
     }
@@ -56,7 +56,7 @@ class UserViewModel : ViewModel() {
                         item?.let {
                             if (it.uid.equals(myUid)) {
                                 _my.value = it
-                            }else {
+                            } else {
                                 allUsers.add(it)
                             }
                         }
@@ -66,12 +66,12 @@ class UserViewModel : ViewModel() {
             })
     }
 
-    fun getSearchUsers(searchUser : String) {
+    fun getSearchUsers(searchUser: String) {
         val searchUserList = ArrayList<User>()
 
-        if(searchUser == "") {
+        if (searchUser == "") {
             _searchUsers.value = getUsers.value
-        }else {
+        } else {
             getUsers.value?.filter { it.name?.contains(searchUser) == true }?.map {
                 searchUserList.add(it)
             }

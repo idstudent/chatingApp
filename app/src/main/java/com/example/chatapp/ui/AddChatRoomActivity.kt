@@ -14,7 +14,7 @@ class AddChatRoomActivity : BaseActivity<ActivityAddChatRoomBinding>() {
     override val layoutId: Int
         get() = R.layout.activity_add_chat_room
 
-    private val userViewModel : UserViewModel by viewModel()
+    private val userViewModel: UserViewModel by viewModel()
     private var adapter = ChatUsersListAdapter()
 
     override fun initView() {
@@ -43,7 +43,12 @@ class AddChatRoomActivity : BaseActivity<ActivityAddChatRoomBinding>() {
                 finish()
             }
             etOpponentName.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -55,6 +60,7 @@ class AddChatRoomActivity : BaseActivity<ActivityAddChatRoomBinding>() {
             })
         }
     }
+
     override fun initViewModel() {
         super.initViewModel()
 

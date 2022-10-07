@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.chatapp.App
 import com.example.chatapp.ui.ChatRoomActivity
 import com.example.chatapp.model.ChatRoom
-
 import com.example.chatapp.model.User
 import com.example.chatapp.databinding.ListChatroomItemBinding
 import com.example.chatapp.util.setOnSingleClickListener
@@ -64,10 +63,10 @@ class ChatListAdapter : ListAdapter<ChatRoom, ChatListAdapter.ChatRoomViewHolder
         init {
             binding.root.setOnSingleClickListener {
                 val intent = Intent(binding.root.context, ChatRoomActivity::class.java)
-                intent.putExtra("ChatRoom", item)      //채팅방 정보
-                intent.putExtra("Opponent", opponentUser)          //상대방 사용자 정보
-                intent.putExtra("ChatRoomKey", chatRoomKeys[adapterPosition])     //채팅방 키 정보
-                binding.root.context.startActivity(intent)                            //해당 채팅방으로 이동
+                intent.putExtra("chatRoom", item)
+                intent.putExtra("opponent", opponentUser)
+                intent.putExtra("chatRoomKey", chatRoomKeys[adapterPosition])
+                binding.root.context.startActivity(intent)
             }
         }
 

@@ -57,7 +57,7 @@ class MessageAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (getItem(position).senderUid == myUid) {       //레이아웃 항목 초기화
+        if (getItem(position).senderUid == myUid) {
             (holder as MyMessageViewHolder).onBind(getItem(position) as Message)
         } else {
             (holder as OtherMessageViewHolder).onBind(getItem(position) as Message, position)
@@ -98,14 +98,13 @@ class MessageAdapter(
         }
 
 
-
-        private fun setShown(position: Int) {          //메시지 확인하여 서버로 전송
+        private fun setShown(position: Int) {
             chatRoomKey?.let {
                 App.firebaseDatabaseInstance?.getReference("ChatRoom")
                     ?.child("chatRooms")?.child(it)?.child("messages")
                     ?.child(messageKeys[position])?.child("confirmed")?.setValue(true)
                     ?.addOnSuccessListener {
-                        Log.e("successljy","success")
+                        Log.e("successljy", "success")
                     }
             }
         }

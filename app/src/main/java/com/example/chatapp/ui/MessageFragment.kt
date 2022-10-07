@@ -1,7 +1,6 @@
 package com.example.chatapp.ui
 
 import android.content.Intent
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chatapp.*
 import com.example.chatapp.databinding.FragmentMessageBinding
@@ -17,8 +16,8 @@ class MessageFragment : BaseFragment<FragmentMessageBinding>() {
     override val layoutId: Int
         get() = R.layout.fragment_message
 
-    private val chatListViewModel : ChatListViewModel by viewModel()
-    private var chatRooms =  ArrayList<ChatRoom>()
+    private val chatListViewModel: ChatListViewModel by viewModel()
+    private var chatRooms = ArrayList<ChatRoom>()
     private var chatRoomKeys = ArrayList<String>()
 
     override fun initView() {
@@ -31,18 +30,18 @@ class MessageFragment : BaseFragment<FragmentMessageBinding>() {
             rvChat.adapter = chatListAdapter
         }
 
-        chatListViewModel.result.observe(this, Observer{
+        chatListViewModel.result.observe(this) {
             chatRooms.clear()
             chatRoomKeys.clear()
 
-            it.children.map {  data ->
+            it.children.map { data ->
                 data.getValue<ChatRoom>()?.let { value -> chatRooms.add(value) }
-                data?.key?.let { key ->  chatRoomKeys.add(key) }
+                data?.key?.let { key -> chatRoomKeys.add(key) }
             }
             chatListAdapter.submitList(chatRooms)
             chatListAdapter.submit(chatRoomKeys)
 
-        })
+        }
     }
 
     override fun initListener() {

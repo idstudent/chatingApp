@@ -103,9 +103,9 @@ class ChatUsersListAdapter : ListAdapter<User, ChatUsersListAdapter.ChatUserView
 
         fun goToChatRoom(chatRoom: ChatRoom, opponentUid: User) {
             val intent = Intent(binding.root.context, ChatRoomActivity::class.java)
-            intent.putExtra("ChatRoom", chatRoom)
-            intent.putExtra("Opponent", opponentUid)
-            intent.putExtra("ChatRoomKey", "")
+            intent.putExtra("chatRoom", chatRoom)
+            intent.putExtra("opponent", opponentUid)
+            intent.putExtra("chatRoomKey", "")
             binding.root.context.startActivity(intent)
         }
     }

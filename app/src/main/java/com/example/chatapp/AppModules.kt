@@ -5,9 +5,7 @@ import com.example.chatapp.viwemodel.ChatMessageViewModel
 import com.example.chatapp.viwemodel.UserViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.ktx.Firebase
 import org.koin.androidx.viewmodel.dsl.viewModel
-import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 object AppModules {
