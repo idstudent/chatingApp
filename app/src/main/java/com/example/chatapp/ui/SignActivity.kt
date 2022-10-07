@@ -1,7 +1,6 @@
 package com.example.chatapp.ui
 
 import android.content.Intent
-import android.util.Log
 import android.widget.Toast
 import com.example.chatapp.App
 import com.example.chatapp.R
@@ -52,11 +51,21 @@ class SignActivity : BaseActivity<ActivitySignBinding>() {
                             e.printStackTrace()
                         }
                     } else {
+                        /*
+                            파이어베이스 realtimebase 삭제했는데, 백업이 되있는건지
+                            db에는 안보이는데, 전에 생성한 계정으로 생성이 안됩니다
+                            test@naver.com, test123@naver.com 등등으로 만들어서 회원가입이 안되니
+                            가입 테스트시 다른거로 가입해주세요
+                        */
                         task.addOnFailureListener {
-                            Log.e("errorljy", "${it.localizedMessage.toString()} ${it.printStackTrace()} $it")
+                            if(it.localizedMessage.contains("The email address is already in use by another account")) {
+                                Toast.makeText(this, "이미 존재하는 이메일입니다.", Toast.LENGTH_SHORT).show()
+                            }else {
+                                Toast.makeText(this, "회원가입에 실패하였습니다.", Toast.LENGTH_SHORT).show()
+                            }
                         }
 
-                        Toast.makeText(this, "회원가입에 실패하였습니다.", Toast.LENGTH_SHORT).show()
+
                     }
                 }
         }
